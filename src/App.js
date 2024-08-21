@@ -2,44 +2,65 @@ import './styles.css';
 import { useState } from "react";
 
 function App() {
+
   const [reminders, setReminders] = useState([])
 
-  const [title, setTitle] = useState("");
-  const [date, setDate] = useState("");
+  const [reminderText, setReminderText] = useState("");
+  const [reminderDate, setReminderDate] = useState("");
 
   const registerSubmit = () => {
-    if(!title || !date) return;
-    addReminder(title, date); //substituir por database
-    setDate("");
-    setTitle("");
+    if(!reminderText || !reminderDate) {
+      alert("Por favor, preencha os campos descrição do lembrete e data.")
+      return;
+    }
+    const today = new Date();
+    const selectedDate = new Date(reminderDate);
+    
+    if (selectedDate <= today) {
+      alert("Por favor, escolha uma data futura.");
+      setReminderDate("");
+      return;
+    }
+    addReminder(reminderText, reminderDate); //substituir por database
+    setReminderDate("");
+    setReminderText("");
   }
   const formatDate = (date) => {
     const [year, month, day] = date.split('-');
     return `${day}/${month}/${year}`;
   };
-  const addReminder = (title, date) => {
+  const addReminder = (reminderText, reminderDate) => {
     const lastId = reminders.length > 0 ? reminders[reminders.length - 1].id : 0;
     const newId = lastId + 1;
-    const formatedDate = formatDate(date);
     const newReminder = {
       id: newId,
-      text: title,
-      date: formatedDate,
+      text: reminderText,
+      date: reminderDate,
     };
     setReminders([...reminders, newReminder]);
   };
 
   const groupByDate = (reminders) => {
     return reminders.reduce((acc, reminder) => {
-      const { date, text } = reminder;
+      const { date, text, id } = reminder;
       if (!acc[date]) {
         acc[date] = [];
       }
-      acc[date].push(text);
+      acc[date].push([text,id]);
       return acc;
     }, {});
   };
   const groupedReminders = groupByDate(reminders);
+
+  const removeReminder = (id) =>{
+    console.log(id)
+    const newReminders = [...reminders]
+    const filteredReminders = newReminders.filter((reminders) =>
+      reminders.id !== id ? reminders: null
+    );
+    setReminders(filteredReminders);
+
+  }
 
   return (
     <div className="container">
@@ -51,16 +72,16 @@ function App() {
           type="text"
           placeholder="Insira a descrição do lembrete"
           maxLength="50"
-          onChange={(e) => setTitle(e.target.value)}
-          value={title}
+          onChange={(e) => setReminderText(e.target.value)}
+          value={reminderText}
           />
         </div>
         <div className="dateInputContainer">
           <p>Quando quer ser lembrado?</p>
           <input
           type="date"
-          value={date}
-          onChange={(e) => setDate(e.target.value)}
+          value={reminderDate}
+          onChange={(e) => setReminderDate(e.target.value)}
           />
         </div>
 
@@ -76,16 +97,18 @@ function App() {
           <h2>Lembretes</h2>
         )}
 
-        {Object.keys(groupedReminders).map((date) => (
+        {Object.keys(groupedReminders)
+        .sort((a,b) => new Date(a) - new Date(b))
+        .map((date) => (
           <div key={date} className="reminderGroup">
             <div className="reminderDate">
-              <h3>Data: {date}</h3>
+              <h3>Data: {formatDate(date)}</h3>
             </div>
             <div className="reminderText">
-              {groupedReminders[date].map((text, index) => (
+              {groupedReminders[date].map(([text,id], index) => (
                 <div key={index} className="reminderItem">
-                  <span>Lembrete: {text} </span> 
-                  <button>X</button>
+                  <p>Lembrete: {text} </p> 
+                  <button className="deleteButton" onClick={() => removeReminder(id)}>X</button>
                 </div>
               ))}
             </div>
@@ -93,32 +116,6 @@ function App() {
         ))
         }
       </div>
-
-
-      {/* <div className="reminders">
-      {grouped.length === 0 ? (
-        <h3>Nenhum lembrete registrado.</h3>
-      ):(
-        <h2>Lembretes</h2>
-      )
-      }
-        {reminders.map((reminders) => (
-            <div key={reminders.id} className="reminderGroup">
-              <div className="reminderDate">
-                <h3>Data: {reminders.date}</h3>
-              </div>
-              <div className="reminderText">
-                <span>Lembrete: {reminders.text} </span>
-                <button>Excluir</button>
-              </div>
-            </div>
-          ))
-        }
-      </div> */}
-
- 
-
-
     </div>
 
 
