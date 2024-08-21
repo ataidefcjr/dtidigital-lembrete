@@ -1,0 +1,163 @@
+.container{
+    margin: 0;
+    min-height: 100vh;
+    min-width: 460px;
+    padding-top: 10%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    background: linear-gradient(#140695, #240455);
+    overflow-y: auto;
+}
+
+.title{
+    font-size:90px;
+    color: #f1f1f1;
+    animation: animTitle 2s;
+    text-shadow: 2px 5px 10px rgba(0,0,0,0.2);
+}
+
+.container-box{
+    background-color: rgba(255,255,255,0.35);
+    padding: 20px;
+    margin: 20px;
+    width: 60%;
+    min-width: 450px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.6);
+    animation: animTitle 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.textInputContainer{
+    font-size: 26px;
+    font-weight: bold;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.textInputContainer input{
+    border:0;
+    margin: 10px 0px 20px 0px;
+    border-radius: 6px;
+    min-width: 350px;
+    padding: 10px;
+    font-size: 18px;
+    background-color: rgba(255,255,255,0.5);
+    color:#000;
+    outline: none;
+}
+
+.textInputContainer input::placeholder{
+    color: rgba(0,0,0,0.5);
+}
+
+.dateInputContainer{
+    font-size: 26px;
+    font-weight: bold;
+    border: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.dateInputContainer input{
+    border:0;
+    margin: 10px 0px 20px 0px;
+    border-radius: 6px;
+    text-align: center;
+    width: 75%;
+    padding: 10px;
+    font-size: 18px;
+    background-color: rgba(255,255,255,0.5);
+    color:#000;
+    outline: none;
+    margin-right: 8px;
+}
+
+.dateInputContainer input::placeholder{
+    color: rgba(0,0,0,0.5);
+}
+
+.buttonRegister{
+    background-color: transparent;
+    border:0;
+    font-size: 26px;
+    font-weight: bold;
+    padding: 5px 0px 5px 0px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
+    transition: transform 0.4s;
+}
+
+.buttonRegister:hover{
+    transform: scale(1.35);
+}
+
+.reminders{
+    background-color: rgba(255,255,255,0.35);
+    padding: 20px;
+    margin: 20px 20px 200px 20px;
+    width: 60%;
+    min-width: 450px;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 2px 6px 15px rgba(0,0,0,0.6);
+    animation: animTitle 1s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.reminders h2{
+    padding: 5px 0px 40px 0px;
+    font-size: 28pt;
+}
+
+.reminderGroup{
+    margin: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 350px;
+    background-color: rgba(255,255,255,0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reminderDate{
+    margin-bottom: 10px;
+}
+.reminderText{
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reminderItem{
+    margin: 3px;
+}
+
+@keyframes animTitle {
+    from{
+        transform: rotateX(90deg);
+    }
+    to{
+        transform: rotateX(0deg);
+    }
+ }
