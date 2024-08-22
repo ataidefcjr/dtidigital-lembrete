@@ -3,7 +3,7 @@ import { validateData } from "./reminderUtils";
 
 //Identificando o URL para qual o axios vai enviar as requisições
 const api = axios.create({ 
-  baseURL: 'http://192.168.100.20:3001/reminder'
+  baseURL: 'http://localhost:3001/reminder'
 })
 
 //Envia requisição GET para obter todos os lembretes
