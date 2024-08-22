@@ -24,11 +24,13 @@ function App() {
     addReminder(reminderText, reminderDate); //substituir por database
     setReminderDate("");
     setReminderText("");
-  }
+  };
+
   const formatDate = (date) => {
     const [year, month, day] = date.split('-');
     return `${day}/${month}/${year}`;
   };
+
   const addReminder = (reminderText, reminderDate) => {
     const lastId = reminders.length > 0 ? reminders[reminders.length - 1].id : 0;
     const newId = lastId + 1;
@@ -50,6 +52,7 @@ function App() {
       return acc;
     }, {});
   };
+  
   const groupedReminders = groupByDate(reminders);
 
   const removeReminder = (id) =>{
