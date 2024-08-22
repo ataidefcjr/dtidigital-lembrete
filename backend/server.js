@@ -12,5 +12,3 @@ app.use(cors())
 app.use('/reminder', getReminders, postReminder)
 
 app.listen(3001, () => console.log("Servidor Iniciado"))
-
-

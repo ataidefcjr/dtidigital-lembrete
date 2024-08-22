@@ -1,175 +1,145 @@
 .container{
     margin: 0;
-    width: 100%;
-    padding-top: 100px;
+    padding-top:50px;
+    width: 95vw;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items:center;
     flex-direction: column;
 }
 
 .title{
-    font-size:90px;
-    color: #f1f1f1;
+    font-size:50px;
+    color: #eee;
+    text-decoration: dashed;
     animation: animTitle 2s;
-    text-shadow: 2px 5px 10px rgba(0,0,0,0.2);
+    text-shadow: 2px 5px 10px rgba(0,0,0,0.5);
 }
 
-.container-box{
+.container-box, .reminders{
     background-color: rgba(255,255,255,0.35);
     padding: 20px;
     margin: 20px;
-    width: 60%;
-    min-width: 450px;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 2px 6px 15px rgba(0,0,0,0.6);
+    width: 90%;
+    min-width: 300px;
+    max-width: 600px;
+    border-radius: 20px;
+    box-shadow: 2px 5px 10px rgba(0,0,0,0.5);
     animation: animTitle 1s;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    text-shadow: 0px 0px 2px rgba(255,255,255,0.2);
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    transition: transform 0.3s;
+    &:hover{
+        transform: scale(1.01);
+        background-color: rgba(255,255,255,0.37);
+    }
 }
 
-.textInputContainer{
-    font-size: 26px;
+.textInput, .dateInput, .reminders h2{
+    font-size: 20px;
     font-weight: bold;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.textInputContainer input{
-    border:0;
-    margin: 10px 0px 20px 0px;
-    border-radius: 6px;
-    min-width: 350px;
-    padding: 10px;
-    font-size: 18px;
-    background-color: rgba(255,255,255,0.5);
-    color:#000;
-    outline: none;
-}
-
-.textInputContainer input::placeholder{
-    color: rgba(0,0,0,0.5);
-}
-
-.dateInputContainer{
-    font-size: 26px;
-    font-weight: bold;
-    border: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.dateInputContainer input{
-    border:0;
-    margin: 10px 0px 20px 0px;
-    border-radius: 6px;
     text-align: center;
-    width: 75%;
-    padding: 10px;
-    font-size: 18px;
-    background-color: rgba(255,255,255,0.5);
-    color:#000;
-    outline: none;
-    margin-right: 8px;
+    width: 100%;
 }
 
-.dateInputContainer input::placeholder{
-    color: rgba(0,0,0,0.5);
+input{
+    border:0;
+    margin: 5px 0px 20px 0px;
+    border-radius: 10px;
+    width: 100%;
+    padding: 8px;
+    text-align: center;
+    font-size: 15px;
+    background-color: rgba(255,255,255,0.4);
+    color:#000;
+    outline: none;
+    transition: transform 0.3s;
+    &:hover{
+        transform: scale(1.02);
+        background-color: rgba(255,255,255,0.45);
+    }
 }
 
 .buttonRegister{
-    background-color: transparent;
-    border:0;
-    font-size: 26px;
+    background-color: rgba(255,255,255,0.2);
+    padding: 8px;
+    border: 0;
+    border-radius: 15px;
+    font-size: 20px;
     font-weight: bold;
-    padding: 5px 0px 5px 0px;
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
     cursor: pointer;
-    transition: transform 0.6s;
-}
-
-.buttonRegister:hover{
-    transform: scale(1.15);
-}
-
-.reminders{
-    background-color: rgba(255,255,255,0.35);
-    padding: 20px;
-    margin: 20px 20px 200px 20px;
-    width: 60%;
-    min-width: 450px;
-    max-width: 800px;
-    border-radius: 10px;
-    box-shadow: 2px 6px 15px rgba(0,0,0,0.6);
-    animation: animTitle 1s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-shadow: 0px 0px 2px rgba(255,255,255,0.2);
-}
-.reminders h2{
-    padding: 5px 0px 40px 0px;
-    font-size: 28pt;
-    text-shadow: 2px 3px 8px rgba(0,0,0 ,0.2);
+    transition: transform 0.3s;
+    box-shadow: 1px 5px 6px rgba(0,0,0,0.2);
+    &:hover{
+        transform: scale(1.15);
+        background-color: rgba(255,255,255,0.3);
+    }
 }
 
 .reminderGroup{
-    margin: 10px;
+    margin-top: 15px;
     padding: 15px;
     border-radius: 10px;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    text-overflow: clip;
     background-color: rgba(255,255,255,0.25);
     box-shadow: 2px 3px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s;
+    &:hover{
+        background-color: rgba(255,255,255,0.3);
+        transform: scale(1.02);
+    }
 }
 
 .reminderDate{
     margin-bottom: 10px;
-    display: flex;
-    justify-content: center;
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    border-bottom: 1px solid #000; 
+    padding-bottom: 2px;
+    margin: 2px 8vw 15px 8vw;
 }
 
 .reminderItem{
-    padding-bottom: 5px;
+    background-color: rgba(255,255,255,0.1);
+    border-radius: 10px;
+    padding:10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
-    align-items: start;
-}
-
-.reminderItem p{
-    margin-right: 50px;
-}
-.deleteButton{
-    background-color: rgba(255,200,200,0.4);
-    color: red;
-    padding: 5px;
-    border: 0;
-    border-radius: 10px;
-    font-size: 12px;
-    font-weight: bold;
-    cursor: pointer;
+    align-items: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    word-break: break-word;
+    box-shadow: 1px 3px 3px rgba(0,0,0,0.1);
     transition: transform 0.2s;
-    box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
-}
-
-.deleteButton:hover{
-    transform: scale(1.15);
+    & p{
+        margin-right: 10px;
+    }
+    & button{
+        background-color: rgba(255,255,255,0.25);
+        color: red;
+        text-shadow: 1px 1px 1px rgba(0,0,0,0.2);
+        padding: 5px;
+        border: 0;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: transform 0.2s;
+        box-shadow: 1px 5px 6px rgba(0,0,0,0.2);
+    }
+    & button:hover{
+        transform: scale(1.10);
+        background-color: rgba(255,255,255,0.4);
+    }
+    &:hover{
+        background-color: rgba(255,255,255,0.15);
+        transform: scale(1.02);
+    }
 }
 
 

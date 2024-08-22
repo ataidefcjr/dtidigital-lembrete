@@ -25,7 +25,7 @@ router.post('/new', async (req, res) => {
 })
 
 //Exclusão de lembrete
-router.post('/delete/:id', async (req, res) => {
+router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
     try {
         await prisma.reminder.delete({ where: { id: id } });

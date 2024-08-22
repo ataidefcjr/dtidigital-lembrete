@@ -11,44 +11,46 @@ function App() {
 
 
   //Busca os lembretes
-  const handleUpdateReminders = async() =>{
+  const updateReminders = async () => {
     const x = await getReminders()
     setReminders(x);
   };
 
   //Remove um lembrete e atualiza a lista
-  const handleRemoveReminder = async(id) =>{
+  const handleRemoveReminder = async (id) => {
     await removeReminder(id);
-    await handleUpdateReminders();
+    updateReminders();
   }
 
-  const handleSubmit = () => {
-    registerSubmit(reminderText, reminderDate, setReminderText, setReminderDate, setReminders, reminders)
+  //Registra um novo lembrete
+  const handleSubmit = async () => {
+    await registerSubmit(reminderText, reminderDate, setReminderText, setReminderDate)
+    updateReminders();
   };
-  
-    //Faz a busca 1 vez
-    useEffect(() => {
-      handleUpdateReminders();
-    }, []);
-  //Gera array diferente com as datas agrupadas
+
+  //Faz a busca uma vez quando a página é carregada
+  useEffect(() => {
+    updateReminders();
+  }, []);
+
+  //Agrupa por data
   const groupedReminders = groupByDate(reminders);
 
-  
   return (
     <div className="container">
       <h1 className="title">Lembra-te</h1>
       <div className="container-box">
-        <div className="textInputContainer">
+        <div className="textInput">
           <p>O que quer lembrar?</p>
           <input
             type="text"
             placeholder="Insira a descrição do lembrete"
-            maxLength="50"
+            maxLength="60"
             onChange={(e) => setReminderText(e.target.value)}
             value={reminderText}
           />
         </div>
-        <div className="dateInputContainer">
+        <div className="dateInput">
           <p>Quando quer ser lembrado?</p>
           <input
             type="date"
@@ -70,16 +72,16 @@ function App() {
         )}
 
         {Object.keys(groupedReminders)
-          .sort((a, b) => new Date(a) - new Date(b))
-          .map((date) => (
+          .sort((a, b) => new Date(a) - new Date(b)) 
+          .map((date) => ( 
             <div key={date} className="reminderGroup">
-              <div className="reminderDate">
-                <h3>Data: {formatDate(date)}</h3>
+              <div className="reminderDate"> 
+                <h3>Data: {formatDate(date)}</h3> 
               </div>
               <div className="reminderText">
                 {groupedReminders[date].map(([text, id], index) => (
-                  <div key={index} className="reminderItem">
-                    <p>Lembrete: {text} </p>
+                  <div key={index} className="reminderItem"> 
+                    <p> {text} </p>
                     <button className="deleteButton" onClick={() => handleRemoveReminder(id)}>X</button>
                   </div>
                 ))}

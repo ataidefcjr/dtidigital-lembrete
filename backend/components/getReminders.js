@@ -11,7 +11,7 @@ router.get('/get', async (req, res) => {
         res.status(200).json(reminders)
     }
     catch (err) {
-        res.status(500).json({ message: "Ops, algo deu errado." })
+        res.status(500).json({ message: "Ops, algo deu errado.", err })
     }
 })
 

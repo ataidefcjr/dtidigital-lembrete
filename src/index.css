@@ -1,11 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+
 * {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Noto Sans', sans-serif;
   box-sizing: border-box;
 }
 
 body {
-  background: linear-gradient(#140695, #240455);
-  height: 100vh;
+  background: linear-gradient(#3ddbec, #5951c0);
+  background-size: 200% 200%;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: animBackground 6s linear infinite alternate;
+}
+
+@keyframes animBackground {
+  from {
+    background-position: 50% 0%;
+  }
+  to {
+    background-position: 50% 100%;
+  }
 }
