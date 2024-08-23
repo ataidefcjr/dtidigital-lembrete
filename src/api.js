@@ -2,7 +2,7 @@ import axios from "axios"
 import { validateData } from "./reminderUtils";
 
 //Identificando o URL para qual o axios vai enviar as requisições
-const api = axios.create({ 
+const api = axios.create({
   baseURL: 'http://localhost:3001/reminder'
 })
 
@@ -35,10 +35,10 @@ export const registerSubmit = async (reminderText, reminderDate, setReminderText
 
   //Cria o objeto a ser enviado a API
   const newReminder = { text: reminderText, date: dateIso };
-  
+
   try {
     await api.post("/new", newReminder)
-  }catch(e){
+  } catch (e) {
     console.error("Erro ao registrar lembrete.")
   }
 

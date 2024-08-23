@@ -24,21 +24,23 @@ export const formatDate = (date) => {
 
 //Faz a validação dos dados inseridos pelo usuario e converte a data informada pro modelo ISO usado no Banco de Dados
 export const validateData = (reminderText, reminderDate, setReminderDate) => {
-    
+
     if (!reminderText || !reminderDate) {
         alert("Por favor, preencha os campos descrição do lembrete e data.");
         return;
     }
 
-    const date = new Date(reminderDate);
-    const dateIso = date.toISOString();
     const today = new Date();
+    today.setHours(0, 0, 0, 0)
+    const selectedDate = new Date(reminderDate);
 
-    if (date <= today) {
+    if (selectedDate <= today) {
         alert("Por favor, escolha uma data futura.");
         setReminderDate("");
         return;
     }
+
+    const dateIso = selectedDate.toISOString();
 
     return dateIso;
 };

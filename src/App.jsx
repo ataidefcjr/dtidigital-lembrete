@@ -33,6 +33,15 @@ function App() {
     updateReminders();
   }, []);
 
+  //Editar Lembrete (Coloca os dados no input e exclui o original)
+  const editReminder = async (id, text, date) => {
+    setReminderText(text)
+    const newDate = date.split('T')[0];
+    setReminderDate(newDate)
+    await removeReminder(id);
+    updateReminders()
+  }
+
   //Agrupa por data
   const groupedReminders = groupByDate(reminders);
 
@@ -72,17 +81,21 @@ function App() {
         )}
 
         {Object.keys(groupedReminders)
-          .sort((a, b) => new Date(a) - new Date(b)) 
-          .map((date) => ( 
+          .map((date) => (
             <div key={date} className="reminderGroup">
-              <div className="reminderDate"> 
-                <h3>Data: {formatDate(date)}</h3> 
+              <div className="reminderDate">
+                <h3>Data: {formatDate(date)}</h3>
               </div>
               <div className="reminderText">
                 {groupedReminders[date].map(([text, id], index) => (
-                  <div key={index} className="reminderItem"> 
+                  <div key={index} className="reminderItem">
                     <p> {text} </p>
-                    <button className="deleteButton" onClick={() => handleRemoveReminder(id)}>X</button>
+                    <div className='buttons'>
+                      <button className="editButton" width="10px" onClick={() => editReminder(id, text, date)}>
+                        <img src="/editIcon.png" alt="Editar" />
+                      </button>
+                      <button className="deleteButton" onClick={() => handleRemoveReminder(id)}>X</button>
+                    </div>
                   </div>
                 ))}
               </div>
