@@ -28,7 +28,7 @@ A pagina web está operando na porta `3000`
 
 # Premissas Assumidas
 
-As regras foram bem descritas pelo teste, assumi que o proprio dia não pode ser registrado, assumi que deveria ser possivel editar um lembrete, o que foi feito de forma simples, copiando os dados do lembrete que vai ser editado para os inputs correspondentes e excluindo o original.
+As regras foram bem descritas pelo teste, assumi que o proprio dia não pode ser registrado e que deveria ser possivel editar um lembrete, o que foi feito de forma simples, copiando os dados do lembrete que vai ser editado para os inputs correspondentes e excluindo o original.
 
 # Exemplo
 Este é um exemplo da exibição da página
