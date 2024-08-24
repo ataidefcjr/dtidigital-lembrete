@@ -4,10 +4,6 @@ Sistema que permite a criação e exclusão de lembretes.
 
 # Como utilizar 
 
-### Execute o `start.bat` ou `start.sh` 
-
-Ou pode fazer manualmente como descrito abaixo.
-
 ### Back-end
 Para iniciar o servidor basta instalar as dependencias dentro do diretório `'backend'` com comando `npm install` e então `node server.js` para iniciar o servidor.
 
