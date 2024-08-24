@@ -18,8 +18,12 @@ function App() {
 
   //Remove um lembrete e atualiza a lista
   const handleRemoveReminder = async (id) => {
-    await removeReminder(id);
-    updateReminders();
+    if (confirm("Realmente deseja excluir o lembrete?")) {
+      await removeReminder(id);
+      updateReminders();
+    } else {
+      return;
+    }
   }
 
   //Registra um novo lembrete
@@ -33,13 +37,14 @@ function App() {
     updateReminders();
   }, []);
 
-  //Editar Lembrete (Coloca os dados no input e exclui o original)
+  //Editar Lembrete  (Coloca os dados no input e exclui o original)
   const editReminder = async (id, text, date) => {
-    setReminderText(text)
+    setReminderText(text);
     const newDate = date.split('T')[0];
-    setReminderDate(newDate)
+    setReminderDate(newDate);
     await removeReminder(id);
-    updateReminders()
+    updateReminders();
+    window.scrollTo(0, 0);
   }
 
   //Agrupa por data
